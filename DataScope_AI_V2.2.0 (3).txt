@@ -7,23 +7,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-"""
-DataScope RDE — v2.20 (Causal-Driven Forecasting & Enhanced Visualization)
-Major upgrades:
-- FEAT: Forecasting and TCN tabs now correctly recommend exogenous variables based on the summary DAG.
-- ENHANCED: The summary DAG visualization is significantly improved with node coloring by causal role (Driver, Outcome, Mediator) and a clear, interactive legend.
-- FEAT: Added a helper function to classify nodes in the summary graph for visualization.
-- REFINED: The "How to Interpret" section for the summary graph is updated to explain the new visual elements.
-- BRANDING: App relabeled from "DataScope AI" to "DataScope RDE".
-- FEAT: Forecasting tab now supports selecting and forecasting multiple time series simultaneously.
-- FEAT: Deep Learning (TCN) tab now supports future predictions (horizon) and adds its results to the main model comparison table.
-- FEAT: Forecasting and Deep Learning tabs now highlight and pre-select suggested exogenous variables based on previously run AutoDAG results.
-- FIX: Resolved StreamlitAPIException for the 'Holdout size' slider by dynamically calculating valid ranges.
-- ENHANCED: AutoDAG backend dropdown dynamically shows only installed libraries.
-- ENHANCED: Causality graphs are color-coded by node role (Driver, Outcome, Mediator).
-- REFINED: The "Summary" tab now generates a single, integrated causal graph showing both contemporaneous (PC) and time-lagged (Granger) relationships, along with a detailed executive summary.
-- FIX: Corrected a ValueError for duplicate labels in the Summary tab when analyzing panel data by adding an aggregation step.
-"""
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -102,7 +86,7 @@ np.random.seed(GLOBAL_SEED)
 st.set_option("client.showErrorDetails", True)
 
 # ---------- Page / Theme ----------
-st.set_page_config(layout="wide", page_title="DataScope RDE")
+st.set_page_config(layout="wide", page_title=" RDE")
 
 st.markdown(
     """
@@ -131,8 +115,7 @@ st.markdown(
 
 # ---------- Sidebar ----------
 with st.sidebar:
-    logo = Image.open("DataScope_AI_Logo.png")
-    st.image(logo)
+
     
     st.caption("Explore • Correlate • Infer")
 
@@ -825,7 +808,7 @@ if entity_col and entity_col in df.columns:
 # Header
 # =========================
 
-st.title("DataScope RDE — Explore • Correlate • Infer")
+st.title(" RDE — Explore • Correlate • Infer")
 st.caption("Interactive analytics with correlation, Granger causality, automated causal DAG learning, clustering, forecasting, and diagnostics.")
 st.divider()
 
@@ -1788,5 +1771,6 @@ with tabs[13]:
     else: st.info("Upload data to view diagnostics.")
 
 st.divider()
-st.caption("Tip: Start in Summary, investigate relationships, explore/predict, then validate with diagnostics. © DataScope AI")
+st.caption("Tip: Start in Summary, investigate relationships, explore/predict, then validate with diagnostics ")
+
 
