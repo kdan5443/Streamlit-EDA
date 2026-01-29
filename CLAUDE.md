@@ -8,19 +8,22 @@ Streamlit-EDA is an interactive Streamlit web application for causal discovery a
 
 ```
 Streamlit-EDA/
-├── EDA_Streamlit.txt      # Main application code (~1776 lines, Python)
-├── EDA_requirements.txt   # Python dependencies
-├── README.md              # Brief project description
-└── CLAUDE.md              # This file
+├── EDA_Streamlit.py           # Main application code (~1776 lines)
+├── requirements.txt           # Python dependencies
+├── .streamlit/config.toml     # Streamlit theme and server config
+├── .gitignore
+├── LICENSE                    # MIT License
+├── README.md                  # Project documentation
+└── CLAUDE.md                  # This file
 ```
 
-All application logic lives in a single file: `EDA_Streamlit.txt`.
+All application logic lives in a single file: `EDA_Streamlit.py`.
 
 ## Running the Application
 
 ```bash
-pip install -r EDA_requirements.txt
-streamlit run EDA_Streamlit.txt
+pip install -r requirements.txt
+streamlit run EDA_Streamlit.py
 ```
 
 The app runs at `http://localhost:8501` by default. Streamlit auto-reloads on file save.
@@ -33,7 +36,7 @@ The app runs at `http://localhost:8501` by default. Streamlit auto-reloads on fi
 
 ## Code Architecture
 
-### File Layout (EDA_Streamlit.txt)
+### File Layout (EDA_Streamlit.py)
 
 | Section | Lines | Description |
 |---------|-------|-------------|
@@ -86,6 +89,8 @@ Panel data is aggregated by daily mean when algorithms require a unique time ind
 
 ### Color Scheme (Dark Theme)
 
+Configured in `.streamlit/config.toml` and reinforced with inline CSS.
+
 - `#16a34a` (green) — Root/Driver nodes
 - `#dc2626` (red) — Effect/Outcome nodes
 - `#00c2ff` (cyan) — Mediator nodes
@@ -104,8 +109,7 @@ Results are stored in `st.session_state.results` (dict), persisted across tabs w
 
 ## Development Guidelines
 
-- The file extension is `.txt` but contains Python code — do not rename it
-- Keep all code in the single `EDA_Streamlit.txt` file (monolithic architecture)
+- Keep all code in the single `EDA_Streamlit.py` file (monolithic architecture)
 - Use `@st.cache_data` for any new computation functions
 - Follow existing naming conventions (`fig_`, `compute_`, `_private`)
 - Wrap optional dependency imports in try/except blocks
